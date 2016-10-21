@@ -5,8 +5,6 @@ set -e
 mkdir -p -m 0700 /root/.ssh
 echo -e "Host *\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
 
-echo -e "192.30.253.112  github.com" >> /etc/hosts
-
 if [ -e /tmp/image ]; then
   rm /tmp/image -R
 fi
