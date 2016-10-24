@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
 apt-get install docker.io -y
 
-ADD scripts/start.sh /start.sh
-RUN chmod 755 /start.sh
+ADD scripts/start.sh /scripts/start.sh
+RUN chmod 755 /scripts/start.sh
 
-CMD ["/bin/bash", "/start.sh"]
+CMD ["/bin/bash", "/scripts/start.sh"]
