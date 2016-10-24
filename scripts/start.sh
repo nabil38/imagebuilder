@@ -17,7 +17,7 @@ timestamp() {
 
 sed -i -e "s/ramdomreplace/$(timestamp)/g" /tmp/image/Dockerfile
 
-docker build -t $IMAGE_INFOS /tmp/image/
+docker build --build-arg svn_repo="$SVN_REPO" --build-arg svn_user="$SVN_USER" --build-arg svn_pass="$SVN_REPO" -t $IMAGE_INFOS /tmp/image/
 
 docker login --username=$REPO_USER --password=$REPO_PASS --email=$REPO_EMAIL $DOCKER_REPO
 
