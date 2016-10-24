@@ -10,7 +10,7 @@ if [ -e /tmp/image ]; then
 fi
 
 git clone $GIT_REPO /tmp/image
-
+exit 0
 timestamp() {
   date +"%T"
 }
