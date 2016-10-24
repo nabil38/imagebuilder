@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:14.04.4
 MAINTAINER Nicolas Bellamy <n.bellamy@titeya.com>
 
 # Surpress Upstart errors/warning
