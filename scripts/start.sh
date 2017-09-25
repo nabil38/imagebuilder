@@ -26,6 +26,8 @@ SVN_PASS=$(echo $SVN_PASS | sed 's/\%/\\\%/g')
 SVN_PASS=$(echo $SVN_PASS | sed 's/\;/\\\;/g')
 SVN_PASS=$(echo $SVN_PASS | sed 's/\:/\\\:/g')
 SVN_PASS=$(echo $SVN_PASS | sed 's/\=/\\\=/g')
+TIMESTAMP=$(date +"%Y-%m-%d-%T")
+sed -i -e "s/\$timestamp/$TIMESTAMP/g" /tmp/image/Dockerfile &&\
 sed -i -e "s/\$svn_repo/$SVN_REPO/g" /tmp/image/Dockerfile &&\
 sed -i -e "s/\$svn_user/$SVN_USER/g" /tmp/image/Dockerfile &&\
 sed -i -e "s/\$svn_pass/$SVN_PASS/g" /tmp/image/Dockerfile &&\
