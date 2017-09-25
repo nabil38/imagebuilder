@@ -11,7 +11,7 @@ fi
 
 git clone $GIT_REPO /tmp/image
 timestamp() {
-  date +"%T"
+  date +"%Y-%m-%d-%T"
 }
 SVN_REPO=$(echo $SVN_REPO | sed 's/\//\\\//g')
 SVN_PASS=$(echo $SVN_PASS | sed 's/\\/\\\\/g')
@@ -26,13 +26,10 @@ SVN_PASS=$(echo $SVN_PASS | sed 's/\%/\\\%/g')
 SVN_PASS=$(echo $SVN_PASS | sed 's/\;/\\\;/g')
 SVN_PASS=$(echo $SVN_PASS | sed 's/\:/\\\:/g')
 SVN_PASS=$(echo $SVN_PASS | sed 's/\=/\\\=/g')
-TIMESTAMP=$(date +"%Y-%m-%d-%T")
-echo $TIMESTAMP
-sed -i -e "s/\$timestamp/$TIMESTAMP/g" /tmp/image/Dockerfile &&\
 sed -i -e "s/\$svn_repo/$SVN_REPO/g" /tmp/image/Dockerfile &&\
 sed -i -e "s/\$svn_user/$SVN_USER/g" /tmp/image/Dockerfile &&\
 sed -i -e "s/\$svn_pass/$SVN_PASS/g" /tmp/image/Dockerfile &&\
-sed -i -e "s/ramdomreplace/$(timestamp)/g" /tmp/image/Dockerfile
+sed -i -e "s/\$timestamp/$(timestamp)/g" /tmp/image/Dockerfile
 
 #docker build --build-arg svn_repo="$SVN_REPO" --build-arg svn_user="$SVN_USER" --build-arg svn_pass=\"$SVN_PASS\" -t $IMAGE_INFOS /tmp/image/
 docker build -t $IMAGE_INFOS /tmp/image/
